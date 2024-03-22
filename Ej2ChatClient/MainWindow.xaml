@@ -1,0 +1,36 @@
+﻿<Window x:Class="Ej2ChatClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ej2ChatClient" xmlns:viewmodels="clr-namespace:Ej2ChatClient.ViewModels" xmlns:views="clr-namespace:Ej2ChatClient.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+  
+    <ContentControl>
+        <ContentControl.DataContext>
+            <viewmodels:ChatViewModel></viewmodels:ChatViewModel>
+        </ContentControl.DataContext>
+        <ContentControl.Style>
+            <Style TargetType="ContentControl">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Conectado}" Value="True">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <views:ChatView></views:ChatView>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Conectado}" Value="False">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <views:ConexionView></views:ConexionView>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ContentControl.Style>
+
+    </ContentControl>
+</Window>

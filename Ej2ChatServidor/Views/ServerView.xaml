@@ -1,0 +1,34 @@
+﻿<Window x:Class="Ej2ChatServidor.Views.ServerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ej2ChatServidor.Views" xmlns:viewmodels="clr-namespace:Ej2ChatServidor.ViewModels"
+        mc:Ignorable="d"
+        Title="ServerView" Height="450" Width="800">
+    <Window.DataContext>
+        <viewmodels:ChatViewModel></viewmodels:ChatViewModel>
+    </Window.DataContext>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Button DockPanel.Dock="Right" Margin="5" Command="{Binding DetenerCommand}">Detener</Button>
+            <Button DockPanel.Dock="Right" Margin="5" Command="{Binding IniciarCommand}">Iniciar</Button>
+            <TextBlock Margin="5">Dirección IP: <Run Text="{Binding IP}"> </Run></TextBlock>
+        </DockPanel>
+        <ListBox DockPanel.Dock="Right" Width="150" Margin="5" ItemsSource="{Binding Usuarios}"></ListBox>
+        <ListBox Margin="5" ItemsSource="{Binding Mensajes}" HorizontalContentAlignment="Stretch" SelectedIndex="{Binding NumeroMensaje}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="10"
+                            Padding="5" Margin="5">
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" Text="{Binding Origen}"></TextBlock>
+                            <TextBlock FontFamily="Consolas" TextAlignment="Justify" Text="{Binding Mensaje}"></TextBlock>
+                            <TextBlock Text="{Binding Fecha}" HorizontalAlignment="Right"></TextBlock>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+</Window>

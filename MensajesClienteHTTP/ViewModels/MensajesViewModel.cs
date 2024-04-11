@@ -24,6 +24,7 @@ namespace MensajesClienteHTTP.ViewModels
         [RelayCommand]
         private void Enviar()
         {
+            mensajesService.EnviarMensaje(Seleccionado, Mensajes);
         }
 
         public List<SolidColorBrush> Colores { get; set; } = new();

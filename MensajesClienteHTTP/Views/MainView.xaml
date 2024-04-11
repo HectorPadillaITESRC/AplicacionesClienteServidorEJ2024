@@ -12,13 +12,31 @@
             <Label>Texto:</Label>
             <TextBox AcceptsReturn="True" Height="50"></TextBox>
             <Label>Color de letra:</Label>
-            <ComboBox></ComboBox>
+            <ComboBox ItemsSource="{Binding Colores}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Rectangle Width="60" Height="20" Fill="{Binding .}"></Rectangle>
+                            <TextBlock Text="{Binding Color}"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Label>Color de fondo:</Label>
-            <ComboBox></ComboBox>
-            <Button Content="Enviar" HorizontalAlignment="Center" Margin="5"></Button>
+            <ComboBox ItemsSource="{Binding Colores}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Rectangle Width="60" Height="20" Fill="{Binding .}"></Rectangle>
+                            <TextBlock Text="{Binding Color}"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Content="Enviar" HorizontalAlignment="Center" Margin="5" ></Button>
         </StackPanel>
         
-        <DataGrid ItemsSource="{Binding Servidores}" AutoGenerateColumns="False">
+        <DataGrid ItemsSource="{Binding Servidores}" AutoGenerateColumns="False" SelectedItem="{Binding Seleccionado}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding NombreServer}" Width="*" Header="Nombre del servidor"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding IPEndpoint.Address}" Header="Dirección IP"></DataGridTextColumn>
